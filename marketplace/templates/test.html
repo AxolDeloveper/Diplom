@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if posts %}
+        {% for post in posts %}
+            <article class="block">
+                <div class="main-post-header flex" >
+                    <a href="{{ post.href }}" class="main-post-title">
+                        <h3>{{ post.title }}</h3>
+                    </a>
+                    <div class="main-post-info">
+                        <i class="fa-solid fa-calendar"></i>  {{post.decorate_date}}
+                        <i class="fa-solid fa-user"></i>  {{post.user_id}}
+                    </div>
+                </div>
+                    <hr>
+                    <div class="main-post-text">
+                        {{post.cut_text}}
+                    </div>
+            </article>
+
+        {%endfor%}
+    {% else %}
+        <div class="main-empty-posts block">
+            Нет постов
+        </div>
+    {%endif%}
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% if form.errors %}
+    <p class="auth-form-error">
+        Пользователь или пароль не найден.
+        Попробуйте снова
+    </p>
+{%endif%}
+
+<div class="full-width flex auth-form">
+    <div class="block">
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Имя пользователя: </td>
+                    <td>{{ form.username }}</td>
+                </tr>
+
+                <tr>
+                    <td>Пароль: </td>
+                    <td>{{ form.password }}</td>
+                </tr>
+
+            </table>
+            <button type="submit"  class="login-btn">Войти</button>
+            <input type="hidden" name="next" value="{{ next }}"/>
+
+        </form>
+    </div>
+</div>
+
